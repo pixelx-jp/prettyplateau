@@ -15,10 +15,10 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-from prettyplateau.api.render import render
-from prettyplateau.api.types import RenderRequest
 import prettyplateau.data.access as access_module
 import prettyplateau.testing.fixtures as fixtures
+from prettyplateau.api.render import render
+from prettyplateau.api.types import RenderRequest
 
 
 class _FixedDataAccess:

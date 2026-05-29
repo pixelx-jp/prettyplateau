@@ -25,7 +25,6 @@ from prettyplateau.presets.scene import (
 from prettyplateau.style.palette import apply_theme_overrides, load_palette
 from prettyplateau.style.theme import Theme
 
-
 # Map raw plateau-bridge `usage` strings → palette keys.
 # plateau-bridge's canonical Usage enum is {residential, commercial, industrial,
 # educational, public, other}. Synonyms below are accepted defensively for

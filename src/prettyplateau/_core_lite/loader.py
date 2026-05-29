@@ -9,7 +9,6 @@ from pathlib import Path
 from typing import Any
 
 import geopandas as gpd
-import pandas as pd
 import pyarrow.parquet as pq
 import shapely.wkb as _wkb
 

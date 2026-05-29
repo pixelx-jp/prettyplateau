@@ -14,9 +14,9 @@ from pathlib import Path
 
 from PIL import Image
 
-from prettyplateau.api.render import render
 import prettyplateau.data.access as access_module
 import prettyplateau.testing.fixtures as fixtures
+from prettyplateau.api.render import render
 
 
 class _FixedDataAccess:

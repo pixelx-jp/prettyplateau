@@ -5,7 +5,7 @@ All filters return a *new* GeoDataFrame; nothing mutates the input.
 
 from __future__ import annotations
 
-from typing import Iterable
+from collections.abc import Iterable
 
 import geopandas as gpd
 import pandas as pd

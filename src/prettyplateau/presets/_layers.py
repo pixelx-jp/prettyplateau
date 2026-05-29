@@ -38,7 +38,7 @@ def _blend(base_hex: str, mix_hex: str, alpha: float) -> str:
     """Mix two hex colours in sRGB; small `alpha` keeps it close to `base`."""
     base = _hex_to_rgb(base_hex)
     mix = _hex_to_rgb(mix_hex)
-    out = tuple(int(b * (1 - alpha) + m * alpha) for b, m in zip(base, mix))
+    out = tuple(int(b * (1 - alpha) + m * alpha) for b, m in zip(base, mix, strict=False))
     return "#{:02X}{:02X}{:02X}".format(*out)
 
 

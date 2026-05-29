@@ -17,7 +17,7 @@ Frames:
 
 from __future__ import annotations
 
-from typing import Iterable
+from collections.abc import Iterable
 
 import numpy as np
 import pandas as pd
@@ -37,7 +37,6 @@ from prettyplateau.presets.scene import (
 )
 from prettyplateau.style.palette import apply_theme_overrides, load_palette
 from prettyplateau.style.theme import Theme
-
 
 # Event markers per plan-prettyplateau.md (Surviving Buildings Timeline):
 # 1923 · Kantō / 1945 · WWII end / 1964 · Olympics / 1990 · Bubble peak /
@@ -140,9 +139,9 @@ class SurvivorTimelinePreset(BasePreset):
             year_grid = np.linspace(y_lo, y_hi, n_frames).astype(int).tolist()
 
         geometries = list(gdf.geometry)
-        full_fills = [palette.color_for(k) for k in age_keys.tolist()]
+        [palette.color_for(k) for k in age_keys.tolist()]
         unknown_mask = age_keys == "unknown"
-        unknown_fills = [palette.color_for("unknown") if u else None for u in unknown_mask.tolist()]
+        [palette.color_for("unknown") if u else None for u in unknown_mask.tolist()]
         # Pre-compute faded versions per palette key.
         faded_by_key = {k: _faded(palette.color_for(k)) for k in palette.colors}
 
@@ -266,7 +265,7 @@ class SurvivorTimelinePreset(BasePreset):
         # Strip lives just above the legend band (~y=0.15).
         strip_y = 0.155
         # Tick marks at each event year that falls within the data range.
-        for ev_year, ev_label in _EVENT_MARKERS.items():
+        for ev_year, _ev_label in _EVENT_MARKERS.items():
             if not (year_lo <= ev_year <= year_hi):
                 continue
             x = 0.06 + (ev_year - year_lo) / span * 0.88

@@ -10,10 +10,9 @@ Japanese legend entries render correctly without per-call branching.
 
 from __future__ import annotations
 
-import os
+from collections.abc import Iterable
 from importlib.resources import files
 from pathlib import Path
-from typing import Iterable
 
 from matplotlib import font_manager, rcParams
 

@@ -12,10 +12,6 @@ from pathlib import Path
 from typing import Any
 
 import geopandas as gpd
-
-import json
-
-import geopandas as gpd
 from shapely.geometry.base import BaseGeometry
 
 from prettyplateau._core_lite import discover_city

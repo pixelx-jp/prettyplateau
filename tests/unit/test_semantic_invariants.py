@@ -97,5 +97,5 @@ def test_survivor_timeline_building_count_monotonic() -> None:
         return sum(1 for f in layer.fills if f != palette_unknown and not f.startswith("#F"))
 
     counts = [revealed_count(f) for f in timeline.frames]
-    for prev, cur in zip(counts, counts[1:]):
+    for prev, cur in zip(counts, counts[1:], strict=False):
         assert cur >= prev, f"survivor_timeline revealed-building count must be non-decreasing; got {counts}"

@@ -16,7 +16,6 @@ import datetime as _dt
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
-import pytest
 from PIL import Image
 
 from prettyplateau.api.types import RenderRequest
@@ -64,7 +63,7 @@ def _make_composition():
     spec = AttributionSpec(
         text=ATTR_TEXT,
         dataset_id=DATASET_ID,
-        generated_at=_dt.datetime(2026, 5, 29, tzinfo=_dt.timezone.utc),
+        generated_at=_dt.datetime(2026, 5, 29, tzinfo=_dt.UTC),
     )
     return Composer(AttributionInjector(spec)).compose(fig, scene, theme, opts)
 
@@ -91,7 +90,6 @@ def test_svg_has_visible_text_and_metadata(tmp_path: Path):
     # Metadata: parse the file and confirm the <dc:Attribution> element is there.
     tree = ET.parse(out)
     root = tree.getroot()
-    ns = {"dc": "http://purl.org/dc/elements/1.1/"}
     found_attribution = False
     for elem in root.iter():
         if elem.tag.endswith("}Attribution") and elem.text and "PLATEAU" in elem.text:

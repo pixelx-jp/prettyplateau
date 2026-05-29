@@ -35,7 +35,6 @@ from prettyplateau.presets.scene import (
 from prettyplateau.style.palette import apply_theme_overrides, load_palette
 from prettyplateau.style.theme import Theme
 
-
 _WOOD_FIRE_TOKENS = ("木造", "木", "準耐火造")
 """Fallback tokens for cities where `structure` is null but `fire_resistance`
 contains structural clues. Note: this is a soft fallback — we never claim

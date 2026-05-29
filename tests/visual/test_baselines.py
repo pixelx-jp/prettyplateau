@@ -40,12 +40,11 @@ from prettyplateau.style.theme import get_theme
 from prettyplateau.testing.fixtures import fixture_dataset
 from prettyplateau.testing.image_diff import perceptual_hash, rms_diff
 
-
 BASELINE_DIR = Path(__file__).parent / "baselines"
 PRESETS = ("age_rainbow", "use_mosaic", "wood_survivor", "risk_choropleth", "height_topo")
 
 # Fixed for reproducible baselines.
-FIXED_GENERATED_AT = _dt.datetime(2026, 5, 29, 0, 0, 0, tzinfo=_dt.timezone.utc)
+FIXED_GENERATED_AT = _dt.datetime(2026, 5, 29, 0, 0, 0, tzinfo=_dt.UTC)
 
 
 def _render_baseline(preset_id: str, dest: Path) -> Path:
@@ -114,7 +113,7 @@ def test_visual_baseline(tmp_path: Path, preset_id: str, request: pytest.Fixture
     cur_hash = perceptual_hash(current)
     base_hash = perceptual_hash(baseline)
     # dHash equality is strict; a single bit drift is OK because layout shouldn't move.
-    hash_distance = sum(a != b for a, b in zip(cur_hash, base_hash))
+    hash_distance = sum(a != b for a, b in zip(cur_hash, base_hash, strict=False))
     assert hash_distance <= 4, f"{preset_id}: dHash drift {hash_distance} > 4 (likely a layout change)"
 
     rms = rms_diff(current, baseline)

@@ -18,7 +18,7 @@ def build_artifact_metadata(
     generated_at: _dt.datetime | None = None,
     extra: dict[str, Any] | None = None,
 ) -> dict[str, str]:
-    when = generated_at or _dt.datetime.now(tz=_dt.timezone.utc)
+    when = generated_at or _dt.datetime.now(tz=_dt.UTC)
     md: dict[str, str] = {
         "Software": f"prettyplateau {__version__}",
         "Attribution": attribution,

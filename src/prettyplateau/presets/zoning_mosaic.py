@@ -30,7 +30,6 @@ from prettyplateau.presets.scene import (
 )
 from prettyplateau.style.theme import Theme
 
-
 # Mapping from canonical Japanese zoning names to short English category keys.
 # These follow the standard MLIT 13-class scheme.
 _ZONING_MAP: dict[str, str] = {

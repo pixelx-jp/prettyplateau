@@ -214,7 +214,7 @@ class MatplotlibRenderer:
             pc.set_facecolors(fills)
             return
         expanded: list[str] = []
-        for count, fill in zip(per_geom, fills):
+        for count, fill in zip(per_geom, fills, strict=False):
             expanded.extend([fill] * count)
         pc.set_facecolors(expanded)
 
@@ -236,7 +236,7 @@ class MatplotlibRenderer:
             keys = layer.fill_keys or [""] * len(layer.fills)
             colors = [
                 c if k in RESERVED_KEYS else _adjust_contrast(c, theme)
-                for c, k in zip(layer.fills, keys)
+                for c, k in zip(layer.fills, keys, strict=False)
             ]
         else:
             colors = list(layer.fills)
@@ -246,7 +246,7 @@ class MatplotlibRenderer:
             patches.extend(geom_patches)
         # Re-expand colors to match per-geom patch counts.
         expanded_colors: list[str] = []
-        for count, color in zip(per_geom_counts, colors):
+        for count, color in zip(per_geom_counts, colors, strict=False):
             expanded_colors.extend([color] * count)
         colors = expanded_colors
         if not patches:

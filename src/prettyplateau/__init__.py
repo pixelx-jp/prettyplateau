@@ -1,5 +1,6 @@
 """prettyplateau — print-quality city visualizations from Project PLATEAU data."""
 
+from prettyplateau._version import __version__
 from prettyplateau.api.render import list_presets, render
 from prettyplateau.api.types import (
     OutputFormat,
@@ -7,7 +8,6 @@ from prettyplateau.api.types import (
     RenderRequest,
     RenderResult,
 )
-from prettyplateau._version import __version__
 from prettyplateau.fonts import register_bundled_fonts
 from prettyplateau.style.theme import Theme, get_theme
 

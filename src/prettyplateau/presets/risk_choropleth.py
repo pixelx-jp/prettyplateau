@@ -42,7 +42,6 @@ from prettyplateau.presets.scene import (
 from prettyplateau.style.palette import apply_theme_overrides, load_palette
 from prettyplateau.style.theme import Theme
 
-
 _WOOD_FIRE_TOKENS = ("木造", "木", "準耐火造")
 _PRE_1981 = 1981
 _FLOOD_HIGH_KEYS = {"3_5", "5_10", "ge_10"}

@@ -6,7 +6,6 @@ the same swatch never gets two different captions across presets.
 
 from __future__ import annotations
 
-
 # Canonical labels for reserved palette keys. Presets can override per
 # legend entry, but if they don't these defaults keep the language stable.
 RESERVED_LABELS: dict[str, str] = {

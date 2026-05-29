@@ -16,7 +16,6 @@ from __future__ import annotations
 
 from prettyplateau.api.types import PresetMetadata
 
-
 KNOWN_THEMES: frozenset[str] = frozenset(
     {"default", "print", "sakura", "summer_matsuri", "snow", "neon_night"}
 )

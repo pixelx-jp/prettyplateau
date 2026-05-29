@@ -14,7 +14,6 @@ from typer.testing import CliRunner
 
 from prettyplateau.cli.main import app
 
-
 runner = CliRunner()
 
 

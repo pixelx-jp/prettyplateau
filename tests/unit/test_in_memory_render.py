@@ -8,10 +8,10 @@ from __future__ import annotations
 
 from matplotlib.figure import Figure
 
+import prettyplateau.data.access as access_module
+import prettyplateau.testing.fixtures as fixtures
 from prettyplateau.api.render import render
 from prettyplateau.presets.scene import RenderScene
-import prettyplateau.testing.fixtures as fixtures
-import prettyplateau.data.access as access_module
 
 
 class _FixedDataAccess:

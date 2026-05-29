@@ -159,7 +159,7 @@ def render(
     fig = renderer.render(scene, theme_obj, render_opts)
 
     attribution_text = access.get_attribution(dataset)
-    generated_at = _dt.datetime.now(tz=_dt.timezone.utc)
+    generated_at = _dt.datetime.now(tz=_dt.UTC)
     spec = AttributionSpec(
         text=attribution_text,
         dataset_id=dataset.dataset_id,

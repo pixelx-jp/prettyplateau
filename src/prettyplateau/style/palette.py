@@ -7,10 +7,10 @@ but cannot remap semantic keys (unknown stays unknown, no-data stays no-data).
 from __future__ import annotations
 
 import json
+from collections.abc import Iterable
 from dataclasses import dataclass, field
 from importlib.resources import files
 from pathlib import Path
-from typing import Iterable
 
 from prettyplateau.style.theme import Theme
 

@@ -7,11 +7,8 @@ end-to-end against real PLATEAU data is the gallery smoke render, run manually.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-
 import geopandas as gpd
 import numpy as np
-import pandas as pd
 from shapely.geometry import Polygon
 
 from prettyplateau.data.access import CityDataset

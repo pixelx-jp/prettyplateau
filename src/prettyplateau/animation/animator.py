@@ -21,8 +21,8 @@ with frames × buildings.
 
 from __future__ import annotations
 
+from collections.abc import Iterator
 from dataclasses import dataclass
-from typing import Iterator
 
 import numpy as np
 from matplotlib.figure import Figure
@@ -34,7 +34,6 @@ from prettyplateau.presets.base import TimelineSpec
 from prettyplateau.presets.scene import PolygonLayer
 from prettyplateau.renderers.matplotlib_renderer import (
     MatplotlibRenderer,
-    PersistentRender,
     RenderOptions,
 )
 from prettyplateau.style.theme import Theme

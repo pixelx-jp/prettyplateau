@@ -19,6 +19,7 @@ from pathlib import Path
 import pytest
 from PIL import Image
 
+from prettyplateau.api.types import RenderRequest
 from prettyplateau.compose.attribution_injector import (
     AttributionInjector,
     AttributionSpec,
@@ -29,7 +30,6 @@ from prettyplateau.presets.registry import get_registry
 from prettyplateau.renderers.matplotlib_renderer import MatplotlibRenderer, RenderOptions
 from prettyplateau.style.theme import get_theme
 from prettyplateau.testing.fixtures import fixture_dataset
-from prettyplateau.api.types import RenderRequest
 
 
 @pytest.mark.parametrize(
@@ -70,7 +70,7 @@ def test_preset_round_trip_png(tmp_path: Path, preset_id: str) -> None:
     spec = AttributionSpec(
         text=dataset.attribution,
         dataset_id=dataset.dataset_id,
-        generated_at=_dt.datetime(2026, 5, 28, tzinfo=_dt.timezone.utc),
+        generated_at=_dt.datetime(2026, 5, 28, tzinfo=_dt.UTC),
     )
     composition = Composer(AttributionInjector(spec)).compose(fig, scene, theme, opts)
     result = PNGExporter().write(

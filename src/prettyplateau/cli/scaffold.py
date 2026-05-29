@@ -17,7 +17,6 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
-
 SAFE_ID = re.compile(r"^[a-z][a-z0-9_]*$")
 
 

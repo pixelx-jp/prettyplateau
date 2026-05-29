@@ -21,5 +21,5 @@ def compare_to_baseline(current: Path, baseline: Path) -> tuple[float, int]:
     rms = rms_diff(current, baseline)
     cur_hash = perceptual_hash(current)
     base_hash = perceptual_hash(baseline)
-    distance = sum(a != b for a, b in zip(cur_hash, base_hash))
+    distance = sum(a != b for a, b in zip(cur_hash, base_hash, strict=False))
     return rms, distance

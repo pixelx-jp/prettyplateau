@@ -9,7 +9,6 @@ and end up colouring it as "lt_05" (the lowest *real* risk bucket).
 from __future__ import annotations
 
 import geopandas as gpd
-import pandas as pd
 from shapely.geometry import Polygon
 
 from prettyplateau.data.hazard import assign_river_flood_keys

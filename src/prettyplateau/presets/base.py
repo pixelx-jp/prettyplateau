@@ -33,7 +33,7 @@ class DataRequirement:
 class PreparedData:
     """Output of `Preset.prepare`: a city dataset plus derived columns and notes."""
 
-    dataset: "CityDataset"
+    dataset: CityDataset
     derived: dict[str, Any] = field(default_factory=dict)
     warnings: tuple[str, ...] = ()
 
@@ -70,13 +70,13 @@ class BasePreset:
             bbox=request.bbox,
         )
 
-    def prepare(self, dataset: "CityDataset", request: RenderRequest) -> PreparedData:
+    def prepare(self, dataset: CityDataset, request: RenderRequest) -> PreparedData:
         return PreparedData(dataset=dataset)
 
-    def build_scene(self, prepared: PreparedData, theme: "Theme", request: RenderRequest) -> RenderScene:
+    def build_scene(self, prepared: PreparedData, theme: Theme, request: RenderRequest) -> RenderScene:
         raise NotImplementedError
 
     def build_timeline(
-        self, prepared: PreparedData, theme: "Theme", request: RenderRequest
+        self, prepared: PreparedData, theme: Theme, request: RenderRequest
     ) -> TimelineSpec | None:
         return None

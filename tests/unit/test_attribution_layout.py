@@ -42,7 +42,7 @@ def _compose_fixture():
     spec = AttributionSpec(
         text=dataset.attribution,
         dataset_id=dataset.dataset_id,
-        generated_at=_dt.datetime(2026, 5, 29, tzinfo=_dt.timezone.utc),
+        generated_at=_dt.datetime(2026, 5, 29, tzinfo=_dt.UTC),
     )
     composition = Composer(AttributionInjector(spec)).compose(fig, scene, theme, opts)
     return composition

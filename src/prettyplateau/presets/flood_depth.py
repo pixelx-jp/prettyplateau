@@ -35,7 +35,6 @@ from prettyplateau.presets.scene import (
 from prettyplateau.style.palette import apply_theme_overrides, load_palette
 from prettyplateau.style.theme import Theme
 
-
 _DEPTH_LABELS: dict[str, str] = {
     "lt_05": "< 0.5 m",
     "05_1": "0.5–1 m",

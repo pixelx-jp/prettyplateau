@@ -25,7 +25,6 @@ from prettyplateau.presets.scene import (
 )
 from prettyplateau.style.theme import Theme
 
-
 _HEIGHT_BUCKETS: tuple[tuple[float, float, str, str], ...] = (
     (0.0, 5.0, "h_0_5", "< 5 m"),
     (5.0, 10.0, "h_5_10", "5–10 m"),

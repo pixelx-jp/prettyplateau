@@ -14,8 +14,8 @@ non-compliant mp4 by accidentally passing `attribution_card=None`.
 
 from __future__ import annotations
 
+from collections.abc import Iterable, Iterator
 from pathlib import Path
-from typing import Iterable, Iterator
 
 import numpy as np
 
@@ -132,7 +132,7 @@ class VideoExporter:
             stream.first_shape = first_shape  # type: ignore[attr-defined]
             stream.n_frames = n_main + n_card  # type: ignore[attr-defined]
 
-        ffmpeg_bin = imageio_ffmpeg.get_ffmpeg_exe()
+        imageio_ffmpeg.get_ffmpeg_exe()
         # Probe a single frame to learn the shape — `frames` is a generator,
         # so we tee one item. Simplest: read once, then chain it back into
         # the encoder feed.

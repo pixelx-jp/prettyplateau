@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 import sys
 from pathlib import Path
-from typing import Annotated, Optional
+from typing import Annotated
 
 import typer
 from rich.console import Console
@@ -29,15 +29,15 @@ def render_cmd(
     preset: Annotated[str, typer.Option("--preset", "-p", help="Preset id (see --list-presets)")],
     out: Annotated[Path, typer.Option("--out", "-o", help="Output file path")] ,
     theme: Annotated[str, typer.Option("--theme", help="Visual theme")] = "default",
-    width: Annotated[Optional[int], typer.Option("--width", help="Output pixel width (default 3840)")] = None,
-    height: Annotated[Optional[int], typer.Option("--height", help="Output pixel height (inferred from aspect if omitted)")] = None,
+    width: Annotated[int | None, typer.Option("--width", help="Output pixel width (default 3840)")] = None,
+    height: Annotated[int | None, typer.Option("--height", help="Output pixel height (inferred from aspect if omitted)")] = None,
     dpi: Annotated[int, typer.Option("--dpi", help="Render DPI (300 = print)")] = 300,
-    bbox: Annotated[Optional[str], typer.Option("--bbox", help="minLon,minLat,maxLon,maxLat")] = None,
-    title: Annotated[Optional[str], typer.Option("--title", help="Title text drawn on the canvas")] = None,
-    subtitle: Annotated[Optional[str], typer.Option("--subtitle", help="Subtitle text")] = None,
-    data_root: Annotated[Optional[Path], typer.Option("--data-root", help="Directory containing out_<city>/")] = None,
+    bbox: Annotated[str | None, typer.Option("--bbox", help="minLon,minLat,maxLon,maxLat")] = None,
+    title: Annotated[str | None, typer.Option("--title", help="Title text drawn on the canvas")] = None,
+    subtitle: Annotated[str | None, typer.Option("--subtitle", help="Subtitle text")] = None,
+    data_root: Annotated[Path | None, typer.Option("--data-root", help="Directory containing out_<city>/")] = None,
     overwrite: Annotated[bool, typer.Option("--overwrite/--no-overwrite", help="Overwrite existing output file")] = False,
-    option: Annotated[Optional[list[str]], typer.Option("--option", "-O", help="Preset-specific option as key=value (repeatable)")] = None,
+    option: Annotated[list[str] | None, typer.Option("--option", "-O", help="Preset-specific option as key=value (repeatable)")] = None,
     sidecar: Annotated[bool, typer.Option("--sidecar/--no-sidecar", help="Write {out}.json sidecar with full metadata")] = False,
     attribution_corner: Annotated[
         str,
@@ -121,7 +121,7 @@ def list_presets_cmd() -> None:
 def create_preset_cmd(
     preset_id: Annotated[str, typer.Argument(help="Preset id (snake or kebab case)")],
     dest: Annotated[Path, typer.Option("--dest", help="Destination directory")] = Path("."),
-    name: Annotated[Optional[str], typer.Option("--name", help="Display name (default: title-cased id)")] = None,
+    name: Annotated[str | None, typer.Option("--name", help="Display name (default: title-cased id)")] = None,
 ) -> None:
     """Emit a working community preset skeleton — runnable in five minutes."""
     from prettyplateau.cli.scaffold import scaffold

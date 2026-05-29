@@ -8,7 +8,6 @@ from prettyplateau.compose.composer import ComposedArtifact
 from prettyplateau.core.errors import ExportError
 from prettyplateau.export.base import ExportResult
 
-
 _SVG_NS = "http://www.w3.org/2000/svg"
 _RDF_NS = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 _DC_NS = "http://purl.org/dc/elements/1.1/"

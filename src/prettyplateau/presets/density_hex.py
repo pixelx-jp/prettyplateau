@@ -32,7 +32,6 @@ from prettyplateau.presets.scene import (
 from prettyplateau.style.palette import apply_theme_overrides, load_palette
 from prettyplateau.style.theme import Theme
 
-
 _BUCKETS = ("d0", "d1", "d2", "d3", "d4", "d5", "d6")
 
 

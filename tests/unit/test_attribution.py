@@ -26,7 +26,7 @@ def test_report_requires_both_visible_and_metadata():
 
 
 def test_primary_line_format():
-    when = _dt.datetime(2026, 5, 28, tzinfo=_dt.timezone.utc)
+    when = _dt.datetime(2026, 5, 28, tzinfo=_dt.UTC)
     spec = AttributionSpec(
         text="© Project PLATEAU / MLIT (CC BY 4.0)",
         dataset_id="plateau-13113-shibuya-ku-2023-bldg",
