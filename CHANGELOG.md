@@ -6,6 +6,17 @@ this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.1.1] — 2026-05-29
+
+### Fixed
+- README image URLs use absolute GitHub raw paths so they render on the
+  PyPI project page (relative paths only work on github.com).
+- CI: ruff lint clean across the suite; mp4-card test threshold loosened
+  for synthetic-fixture H.264 noise levels across macOS / Linux ffmpeg
+  builds.
+
+## [0.1.0] — 2026-05-29 (yanked — README images didn't render on PyPI)
+
 ### Plan-alignment refactor (self-review pass against `plan-prettyplateau.md`)
 - **`risk_choropleth` renamed** to match plan vocabulary — it is now the
   compound wood × pre-1981 × flood-depth preset (plan's "flagship

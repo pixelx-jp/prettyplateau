@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/branding/yodo-labs-logo.svg" alt="Yodo Labs" width="120" />
+<img src="https://raw.githubusercontent.com/pixelx-jp/prettyplateau/main/docs/assets/branding/yodo-labs-logo.svg" alt="Yodo Labs" width="120" />
 
 # prettyplateau
 
@@ -17,7 +17,7 @@
 
 ---
 
-<img src="gallery/shibuya_use_mosaic.png" alt="渋谷 — Use Mosaic、prettyplateau で生成" />
+<img src="https://raw.githubusercontent.com/pixelx-jp/prettyplateau/main/gallery/shibuya_use_mosaic.png" alt="渋谷 — Use Mosaic、prettyplateau で生成" />
 
 ```bash
 pip install prettyplateau
@@ -42,10 +42,10 @@ OpenStreetMap だけでは作れない種類の地図素材になります。
 
 |  |  |
 |---|---|
-| <img src="gallery/minato_height_topo.png" /> | **Height Topo** — 港区の街並みを建物高度の等高線として表示。 |
-| <img src="gallery/koto_flood_depth.png" /> | **Flood Depth** — 江東区の建物ごとの河川洪水浸水深。データなしは斜線グレー（「低リスク」とは別物）。 |
-| <img src="gallery/shinjuku_density_hex.png" /> | **Density Hex** — 新宿駅前を 250 m ヘックスで密度可視化。 |
-| <img src="gallery/fukuoka_age_rainbow.png" /> | **Building Age Rainbow** — 福岡を建築年で色分け。建築年不明の建物は灰色のまま — 推測しません。 |
+| <img src="https://raw.githubusercontent.com/pixelx-jp/prettyplateau/main/gallery/minato_height_topo.png" /> | **Height Topo** — 港区の街並みを建物高度の等高線として表示。 |
+| <img src="https://raw.githubusercontent.com/pixelx-jp/prettyplateau/main/gallery/koto_flood_depth.png" /> | **Flood Depth** — 江東区の建物ごとの河川洪水浸水深。データなしは斜線グレー（「低リスク」とは別物）。 |
+| <img src="https://raw.githubusercontent.com/pixelx-jp/prettyplateau/main/gallery/shinjuku_density_hex.png" /> | **Density Hex** — 新宿駅前を 250 m ヘックスで密度可視化。 |
+| <img src="https://raw.githubusercontent.com/pixelx-jp/prettyplateau/main/gallery/fukuoka_age_rainbow.png" /> | **Building Age Rainbow** — 福岡を建築年で色分け。建築年不明の建物は灰色のまま — 推測しません。 |
 
 35 枚の launch ギャラリーは [`gallery/`](./gallery/) をご覧ください。
 
