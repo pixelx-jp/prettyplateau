@@ -1,0 +1,14 @@
+{
+  "id": "sakura",
+  "name": "Sakura",
+  "background": "#FCF3F5",
+  "foreground": "#2B1B22",
+  "muted": "#C9A6B0",
+  "accent": "#E58CA3",
+  "grid": "#F0D9DF",
+  "font_primary": "Noto Sans JP",
+  "font_secondary": "Inter",
+  "line_width_scale": 1.0,
+  "contrast": 1.0,
+  "paper_texture": false
+}

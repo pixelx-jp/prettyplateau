@@ -1,0 +1,15 @@
+{
+  "id": "density_hex",
+  "description": "Sequential ramp for log-binned building counts per hex cell.",
+  "kind": "ordinal",
+  "order": ["d0", "d1", "d2", "d3", "d4", "d5", "d6"],
+  "colors": {
+    "d0": "#F4F1E1",
+    "d1": "#E5DBB0",
+    "d2": "#C7C079",
+    "d3": "#8FA85F",
+    "d4": "#3F8C6B",
+    "d5": "#1C5F73",
+    "d6": "#1B2845"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "id": "wood_survivor",
+  "description": "Wooden buildings surviving from the pre-1945 era; everything else greyed. wood_year_unknown is its own bucket so absence of year never poses as 'modern wood'.",
+  "kind": "categorical",
+  "order": ["wood_pre1945", "wood_1946_1980", "wood_post1980", "wood_year_unknown", "non_wood", "unknown"],
+  "colors": {
+    "wood_pre1945":      "#C0392B",
+    "wood_1946_1980":    "#E78A2C",
+    "wood_post1980":     "#7CC576",
+    "wood_year_unknown": "#A8B5B0",
+    "non_wood":          "#E5E7EB",
+    "unknown":           "#C9CDD6"
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "id": "age_rainbow",
+  "description": "Per-building age palette. Buckets follow Japanese building-code history.",
+  "kind": "ordinal",
+  "order": [
+    "pre_1925",
+    "1925_1945",
+    "1946_1970",
+    "1971_1980",
+    "1981_2000",
+    "2001_2010",
+    "2011_present",
+    "unknown"
+  ],
+  "colors": {
+    "pre_1925":     "#5B2A4A",
+    "1925_1945":    "#8E2F4D",
+    "1946_1970":    "#C7493C",
+    "1971_1980":    "#E78A2C",
+    "1981_2000":    "#E8C547",
+    "2001_2010":    "#7CC576",
+    "2011_present": "#2A8FBD",
+    "unknown":      "#C9CDD6"
+  }
+}

@@ -1,0 +1,70 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+# Cancel in-progress runs on the same ref — saves CI minutes when a contributor
+# force-pushes mid-review.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: pytest (${{ matrix.os }}, py${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Install package + dev + animation extras
+        # `animation` extra pulls in imageio-ffmpeg which ships its own static
+        # ffmpeg binary, so the mp4 round-trip test works without a system
+        # ffmpeg install.
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev,animation]'
+
+      - name: Lint (ruff)
+        run: |
+          python -m pip install ruff
+          ruff check src tests
+
+      - name: Run tests
+        # `--update-baselines` is the only sanctioned way to refresh visual
+        # baselines (per CONTRIBUTING.md). Reject any CI run that tries it.
+        run: pytest tests/ -q --strict-markers
+
+      - name: Validate wheel build
+        run: |
+          python -m pip install build
+          python -m build --wheel
+          ls -la dist/
+
+  visual-baseline-drift:
+    name: visual regression baselines must match (linux-py311 reference)
+    runs-on: ubuntu-latest
+    # The baselines were generated on linux-py311; other platforms accept the
+    # 4-bit dHash + 0.10 RMS tolerance configured in the regression suite.
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          python -m pip install -e '.[dev,animation]'
+          pytest tests/visual/test_baselines.py -v

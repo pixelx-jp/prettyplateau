@@ -1,0 +1,14 @@
+{
+  "id": "neon_night",
+  "name": "Neon Night",
+  "background": "#0A0D14",
+  "foreground": "#F4F4F5",
+  "muted": "#5B6478",
+  "accent": "#FF2EA6",
+  "grid": "#1B2030",
+  "font_primary": "Noto Sans JP",
+  "font_secondary": "Inter",
+  "line_width_scale": 1.0,
+  "contrast": 1.2,
+  "paper_texture": false
+}

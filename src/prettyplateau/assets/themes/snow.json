@@ -1,0 +1,14 @@
+{
+  "id": "snow",
+  "name": "Snow",
+  "background": "#F4F7FA",
+  "foreground": "#1B2430",
+  "muted": "#94A3B8",
+  "accent": "#5A8CC9",
+  "grid": "#D9E2EC",
+  "font_primary": "Noto Sans JP",
+  "font_secondary": "Inter",
+  "line_width_scale": 1.0,
+  "contrast": 1.0,
+  "paper_texture": false
+}

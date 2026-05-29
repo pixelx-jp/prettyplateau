@@ -1,0 +1,114 @@
+# ── Python ──────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+.eggs/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+
+# Build artefacts
+build/
+dist/
+*.whl
+*.tar.gz
+
+# Virtual envs
+.venv/
+venv/
+env/
+
+# ── Editor / OS ─────────────────────────────────────────────
+.DS_Store
+*.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── Local runtime outputs ───────────────────────────────────
+# Examples drop renders into examples/out/ — local-only, never committed.
+examples/out/
+
+# Profile / perf scratch
+*.prof
+*.pstats
+profile_*.txt
+
+# Private operational docs (launch playbook, social drafts, internal
+# checklists). These are notes for the maintainer — they aren't part of the
+# product and aren't useful to outside contributors.
+distribution/launch_checklist.md
+distribution/launch_thread.md
+
+# Internal-only working directory
+_internal/
+_work/
+
+# ── Data we never redistribute ──────────────────────────────
+# PLATEAU data is CC BY 4.0; we read it but do NOT bundle it. See README §Data.
+out_*/
+plateau-core/
+plateau_data/
+*.parquet
+*.pmtiles
+*.3dtiles
+
+# Generated mp4 fixtures from tests
+tests/**/_tmp_*
+
+# ── Secrets ─────────────────────────────────────────────────
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+secrets/
+credentials*.json
+# PyPI / Twine — token files. `~/.pypirc` lives in $HOME but if someone
+# ever copies it locally for testing, this rule blocks the commit.
+.pypirc
+.pypi-token
+*.pypi-token
+
+# ── Caches that aren't ours ─────────────────────────────────
+node_modules/
+.parcel-cache/
+.next/
+
+# ── AI assistant artefacts — NEVER ship ─────────────────────
+# Session data, prompts, conversation transcripts, agent memory, scratch
+# notes from any AI coding assistant. These can leak credentials, internal
+# strategy, or unreviewed model output. Block aggressively.
+.claude/
+.claude-*/
+CLAUDE.md
+CLAUDE.local.md
+.cursor/
+.cursorrules
+.aider*/
+.aider.tags.cache.v*/
+.aider.chat.history.*
+.continue/
+.codeium/
+.codeiumignore
+.copilot/
+.github/copilot-instructions.md
+.gemini/
+.bito/
+.tabnine/
+.windsurfrules
+**/agents/
+**/agent_memory/
+**/conversations/
+*.session.json
+*.transcript.json
+

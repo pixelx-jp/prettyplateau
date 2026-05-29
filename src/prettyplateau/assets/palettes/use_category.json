@@ -1,0 +1,33 @@
+{
+  "id": "use_category",
+  "description": "Per-building usage palette. Keys map to plateau-bridge `usage` codes.",
+  "kind": "categorical",
+  "order": [
+    "residential",
+    "commercial",
+    "industrial",
+    "public",
+    "educational",
+    "medical",
+    "religious",
+    "transportation",
+    "agriculture",
+    "mixed",
+    "other",
+    "unknown"
+  ],
+  "colors": {
+    "residential":    "#E8C547",
+    "commercial":     "#E04E5C",
+    "industrial":     "#6B7280",
+    "public":         "#2A8FBD",
+    "educational":    "#7CC576",
+    "medical":        "#D88AC2",
+    "religious":      "#9C6B3C",
+    "transportation": "#3F4858",
+    "agriculture":    "#A8C66C",
+    "mixed":          "#E78A2C",
+    "other":          "#BBBBBB",
+    "unknown":        "#C9CDD6"
+  }
+}

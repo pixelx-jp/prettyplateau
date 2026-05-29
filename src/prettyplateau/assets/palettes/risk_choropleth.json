@@ -1,0 +1,14 @@
+{
+  "id": "risk_choropleth",
+  "description": "Wood × pre-1981 × river-flood-depth compound risk highlight (plan's flagship preset).",
+  "kind": "categorical",
+  "order": ["pre81_wood_flood_high", "pre81_wood_flood_low", "pre81_wood_dry", "other_in_flood", "other_dry", "no_data"],
+  "colors": {
+    "pre81_wood_flood_high": "#8E2F4D",
+    "pre81_wood_flood_low":  "#E04E5C",
+    "pre81_wood_dry":        "#E78A2C",
+    "other_in_flood":        "#A6BBD0",
+    "other_dry":             "#EDEDEF",
+    "no_data":               "#D6D8DB"
+  }
+}

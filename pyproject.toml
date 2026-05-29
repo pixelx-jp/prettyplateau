@@ -1,0 +1,67 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "prettyplateau"
+version = "0.1.0"
+description = "Print-quality city visualizations from Project PLATEAU data."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+authors = [{ name = "Yodo Labs (PixelX Inc.)", email = "pan@yodolabs.jp" }]
+maintainers = [{ name = "Yodo Labs", email = "pan@yodolabs.jp" }]
+keywords = ["plateau", "japan", "map", "visualization", "geospatial", "poster", "city"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: GIS",
+    "Topic :: Scientific/Engineering :: Visualization",
+]
+dependencies = [
+    "geopandas>=0.14",
+    "shapely>=2.0",
+    "pyarrow>=15.0",
+    "pandas>=2.0",
+    "numpy>=1.26",
+    "matplotlib>=3.8",
+    "pillow>=10.0",
+    "pydantic>=2.6",
+    "typer>=0.12",
+    "rich>=13.7",
+]
+
+[project.optional-dependencies]
+animation = ["moviepy>=1.0.3", "imageio>=2.30", "imageio-ffmpeg>=0.4.9"]
+cairo = ["cairocffi>=1.6"]
+dev = ["pytest>=8", "pytest-cov", "ruff>=0.4"]
+all = ["moviepy>=1.0.3", "imageio>=2.30", "imageio-ffmpeg>=0.4.9", "cairocffi>=1.6"]
+
+[project.scripts]
+prettyplateau = "prettyplateau.cli.main:app"
+
+[project.urls]
+Homepage = "https://github.com/pixelx-jp/prettyplateau"
+Documentation = "https://github.com/pixelx-jp/prettyplateau#readme"
+Issues = "https://github.com/pixelx-jp/prettyplateau/issues"
+"Source code" = "https://github.com/pixelx-jp/prettyplateau"
+"Organization" = "https://yodolabs.jp"
+
+[project.entry-points."prettyplateau.presets"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/prettyplateau"]
+# JSON / font assets sit inside the package tree and are picked up automatically
+# by `packages = ["src/prettyplateau"]`. Don't force-include them — doing so
+# duplicates entries in the wheel zip and emits build warnings.
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "W"]
+ignore = ["E501"]

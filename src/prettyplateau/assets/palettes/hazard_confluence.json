@@ -1,0 +1,13 @@
+{
+  "id": "hazard_confluence",
+  "description": "Per-building tally of overlapping hazard categories (flood/tsunami/storm/landslide).",
+  "kind": "ordinal",
+  "order": ["zero", "one", "two", "three_plus", "no_data"],
+  "colors": {
+    "zero":       "#EDEDEF",
+    "one":        "#E8C547",
+    "two":        "#E78A2C",
+    "three_plus": "#8E2F4D",
+    "no_data":    "#D6D8DB"
+  }
+}

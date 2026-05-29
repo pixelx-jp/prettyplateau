@@ -1,0 +1,14 @@
+{
+  "id": "default",
+  "name": "Default",
+  "background": "#FFFFFF",
+  "foreground": "#111111",
+  "muted": "#9CA3AF",
+  "accent": "#FF3366",
+  "grid": "#E5E7EB",
+  "font_primary": "Noto Sans JP",
+  "font_secondary": "Inter",
+  "line_width_scale": 1.0,
+  "contrast": 1.0,
+  "paper_texture": false
+}

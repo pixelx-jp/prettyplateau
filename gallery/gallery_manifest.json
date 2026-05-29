@@ -1,0 +1,221 @@
+{
+  "items": [
+    {
+      "path": "gallery/chiyoda_height_topo.png",
+      "city": "chiyoda",
+      "preset": "height_topo",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/chiyoda_zoning_mosaic.png",
+      "city": "chiyoda",
+      "preset": "zoning_mosaic",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/edogawa_flood_depth.png",
+      "city": "edogawa",
+      "preset": "flood_depth",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/edogawa_risk_choropleth.png",
+      "city": "edogawa",
+      "preset": "risk_choropleth",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/fukuoka_age_rainbow.png",
+      "city": "fukuoka",
+      "preset": "age_rainbow",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/kamakura_use_mosaic.png",
+      "city": "kamakura",
+      "preset": "use_mosaic",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/kamakura_wood_survivor.png",
+      "city": "kamakura",
+      "preset": "wood_survivor",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/koto_flood_depth.png",
+      "city": "koto",
+      "preset": "flood_depth",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/koto_risk_choropleth.png",
+      "city": "koto",
+      "preset": "risk_choropleth",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/minato_height_topo.png",
+      "city": "minato",
+      "preset": "height_topo",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/minato_use_mosaic.png",
+      "city": "minato",
+      "preset": "use_mosaic",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/nagoya_density_hex.png",
+      "city": "nagoya",
+      "preset": "density_hex",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/nagoya_height_topo.png",
+      "city": "nagoya",
+      "preset": "height_topo",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/osaka_density_hex.png",
+      "city": "osaka",
+      "preset": "density_hex",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/osaka_use_mosaic.png",
+      "city": "osaka",
+      "preset": "use_mosaic",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/osaka_wood_survivor.png",
+      "city": "osaka",
+      "preset": "wood_survivor",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/ota_hazard_confluence.png",
+      "city": "ota",
+      "preset": "hazard_confluence",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/sapporo_age_rainbow.png",
+      "city": "sapporo",
+      "preset": "age_rainbow",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/setagaya_hazard_confluence.png",
+      "city": "setagaya",
+      "preset": "hazard_confluence",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/shibuya_flood_depth.png",
+      "city": "shibuya",
+      "preset": "flood_depth",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/shibuya_risk_choropleth.png",
+      "city": "shibuya",
+      "preset": "risk_choropleth",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/shibuya_use_mosaic.png",
+      "city": "shibuya",
+      "preset": "use_mosaic",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/shibuya_wood_survivor.png",
+      "city": "shibuya",
+      "preset": "wood_survivor",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/shibuya_zoning_mosaic.png",
+      "city": "shibuya",
+      "preset": "zoning_mosaic",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/shinjuku_density_hex.png",
+      "city": "shinjuku",
+      "preset": "density_hex",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/shinjuku_height_topo.png",
+      "city": "shinjuku",
+      "preset": "height_topo",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/shinjuku_use_mosaic.png",
+      "city": "shinjuku",
+      "preset": "use_mosaic",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/sumida_wood_survivor.png",
+      "city": "sumida",
+      "preset": "wood_survivor",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/taito_wood_survivor.png",
+      "city": "taito",
+      "preset": "wood_survivor",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/yokohama_density_hex.png",
+      "city": "yokohama",
+      "preset": "density_hex",
+      "format": "png",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    },
+    {
+      "path": "gallery/fukuoka_survivor_timeline.mp4",
+      "city": "fukuoka",
+      "preset": "survivor_timeline",
+      "format": "mp4",
+      "attribution": "© Project PLATEAU / MLIT (CC BY 4.0)"
+    }
+  ]
+}

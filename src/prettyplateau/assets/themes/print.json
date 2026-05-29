@@ -1,0 +1,14 @@
+{
+  "id": "print",
+  "name": "Print",
+  "background": "#FBFAF7",
+  "foreground": "#1A1A1A",
+  "muted": "#8C8C8C",
+  "accent": "#C03050",
+  "grid": "#E0DCD3",
+  "font_primary": "Noto Sans JP",
+  "font_secondary": "Inter",
+  "line_width_scale": 1.0,
+  "contrast": 0.95,
+  "paper_texture": true
+}

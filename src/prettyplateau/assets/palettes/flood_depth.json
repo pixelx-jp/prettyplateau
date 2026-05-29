@@ -1,0 +1,15 @@
+{
+  "id": "flood_depth",
+  "description": "Per-building river-flood depth palette. No-data has its own hashed swatch.",
+  "kind": "ordinal",
+  "order": ["lt_05", "05_1", "1_3", "3_5", "5_10", "ge_10", "no_data"],
+  "colors": {
+    "lt_05":   "#FBEBC8",
+    "05_1":    "#F5C26B",
+    "1_3":     "#E78A2C",
+    "3_5":     "#C7493C",
+    "5_10":    "#8E2F4D",
+    "ge_10":   "#5B2A4A",
+    "no_data": "#D6D8DB"
+  }
+}
