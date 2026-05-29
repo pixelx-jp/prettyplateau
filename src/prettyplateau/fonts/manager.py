@@ -134,7 +134,7 @@ def register_bundled_fonts() -> None:
         head.append(LATIN_FONT_FAMILY)
     rcParams["font.sans-serif"] = [*head, *[f for f in existing if f not in head]]
     rcParams["font.family"] = "sans-serif"
-    _logger.info(
+    _logger.debug(
         "registered bundled fonts: %s; sans-serif head: %s",
         sorted(registered_names),
         head,

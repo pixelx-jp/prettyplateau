@@ -148,9 +148,12 @@ def discover_city(city: str, data_root: str | os.PathLike[str] | None = None) ->
                     return d.resolve()
 
     raise DataNotFoundError(
-        f"could not locate buildings.parquet for city {city!r}. "
-        f"Pass --data-root or set PRETTYPLATEAU_DATA_ROOT to a directory "
-        f"containing out_<city>/buildings.parquet."
+        f"could not locate buildings.parquet for city {city!r}.\n"
+        f"  Get data the quick way:  prettyplateau fetch {city}\n"
+        f"  …then re-run your render command (optionally with --data-root).\n"
+        f"  Alternatives: build it yourself with plateau-bridge "
+        f"(https://github.com/pixelx-jp/plateau-bridge), or point --data-root / "
+        f"PRETTYPLATEAU_DATA_ROOT at a directory containing out_<city>/buildings.parquet."
     )
 
 

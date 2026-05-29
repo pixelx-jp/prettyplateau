@@ -99,6 +99,66 @@ def render_cmd(
     _console.print(f"[dim]{result.attribution}[/dim]")
 
 
+@app.command("fetch")
+def fetch_cmd(
+    city: Annotated[str, typer.Argument(help="City slug (`shibuya`) or 5-digit JIS code (`13113`)")],
+    dest_root: Annotated[
+        Path | None,
+        typer.Option("--data-root", help="Where to create out_<city>/ (default: current dir)"),
+    ] = None,
+    force: Annotated[bool, typer.Option("--force", help="Re-download even if already present")] = False,
+) -> None:
+    """Download a prebuilt buildings.parquet for a city (no pipeline needed).
+
+    Pulls the bundle from the public plateau-bridge index, verifies its
+    sha256, and extracts it to out_<city>/ so `render` works immediately.
+    """
+    from rich.progress import (
+        BarColumn,
+        DownloadColumn,
+        Progress,
+        TaskID,
+        TextColumn,
+        TransferSpeedColumn,
+    )
+
+    from prettyplateau.data.fetch import FetchError, fetch_city
+
+    try:
+        with Progress(
+            TextColumn("[bold blue]{task.description}"),
+            BarColumn(),
+            DownloadColumn(),
+            TransferSpeedColumn(),
+            console=_console,
+            transient=True,
+        ) as progress:
+            task_id: TaskID | None = None
+
+            def on_progress(done: int, total: int) -> None:
+                nonlocal task_id
+                if task_id is None:
+                    task_id = progress.add_task(f"fetch {city}", total=total)
+                progress.update(task_id, completed=done)
+
+            out_dir, entry = fetch_city(
+                city, dest_root=dest_root, force=force, on_progress=on_progress
+            )
+    except FetchError as exc:
+        _console.print(f"[red]error[/red]: {exc}")
+        raise typer.Exit(code=2) from exc
+
+    _console.print(
+        f"[green]ready[/green] {out_dir}  "
+        f"({entry.city_name} {entry.dataset_year}, {entry.n_buildings:,} buildings)"
+    )
+    _console.print(
+        f"[dim]next:[/dim] prettyplateau render --city {entry.slug} --preset use_mosaic "
+        f"--out {entry.slug}.png"
+        + (f" --data-root {dest_root}" if dest_root else "")
+    )
+
+
 @app.command("list-presets")
 def list_presets_cmd() -> None:
     """List registered presets."""

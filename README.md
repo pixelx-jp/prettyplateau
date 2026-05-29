@@ -21,6 +21,7 @@
 
 ```bash
 pip install prettyplateau
+prettyplateau fetch shibuya          # downloads a prebuilt buildings.parquet
 prettyplateau render --city shibuya --preset use_mosaic --out shibuya.png
 ```
 
@@ -30,9 +31,11 @@ from prettyplateau import render
 render(city="fukuoka", preset="age_rainbow", out="fukuoka.png")
 ```
 
-> The commands above need a local `out_<city>/buildings.parquet` produced by
-> [`plateau-bridge`](https://github.com/pixelx-jp/plateau-bridge).
-> See [§ Data](#data) below for how to get one.
+> `prettyplateau fetch <city>` pulls a prebuilt `out_<city>/buildings.parquet`
+> from the public [`plateau-bridge`](https://github.com/pixelx-jp/plateau-bridge)
+> release index (sha256-verified) so the renderer works without running the
+> pipeline. ~30 cities are available; see [§ Data](#data) for other ways to get
+> data, including building any of 56+ cities yourself.
 
 ## What it does
 
@@ -133,21 +136,27 @@ prettyplateau **does not redistribute** PLATEAU data. The renderer reads
 [plateau-bridge](https://github.com/pixelx-jp/plateau-bridge) which in turn
 derives from the public PLATEAU dataset. Three ways to feed the renderer:
 
-### Option 1 — run plateau-bridge yourself (any of 56+ cities)
+### Option 1 — fetch a prebuilt bundle (recommended, ~30 cities)
 
 ```bash
-git clone https://github.com/pixelx-jp/plateau-bridge && cd plateau-bridge
-pip install -e .
-plateau pipeline --city shibuya --out out_shibuya
-prettyplateau render --city shibuya --preset use_mosaic \
-  --out shibuya.png --data-root /path/to/plateau-bridge
+prettyplateau fetch shibuya          # → out_shibuya/buildings.parquet (sha256-verified)
+prettyplateau render --city shibuya --preset use_mosaic --out shibuya.png
 ```
 
-### Option 2 — download a pre-built sample (planned)
+Bundles come from the public `plateau-bridge` release index. No pipeline, no
+CityGML download — just the parquet the renderer needs.
 
-A small set of pre-built parquets for the most-rendered cities will live
-on Hugging Face Datasets so casual users can try the CLI without running
-the full pipeline. *(Planned with v0.2.)*
+### Option 2 — build it yourself with plateau-bridge (any of 56+ cities)
+
+```bash
+pip install plateau-bridge
+plateau build shibuya --out out_shibuya     # processes CityGML locally
+prettyplateau render --city shibuya --preset use_mosaic \
+  --out shibuya.png --data-root .
+```
+
+(`plateau pull shibuya` fetches the same prebuilt bundle as Option 1 from the
+bridge CLI.)
 
 ### Option 3 — bring your own GeoDataFrame
 
