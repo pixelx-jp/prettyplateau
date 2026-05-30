@@ -112,3 +112,6 @@ CLAUDE.local.md
 *.session.json
 *.transcript.json
 
+
+# generated gallery site (built in CI by pages.yml)
+_site/

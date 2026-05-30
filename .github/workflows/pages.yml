@@ -1,0 +1,50 @@
+name: pages
+
+# Build the static gallery from gallery/gallery_manifest.json and publish it to
+# GitHub Pages. The page is generated in CI (never committed) so it can never
+# drift from the manifest. Enable once in repo Settings → Pages → Source:
+# "GitHub Actions".
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "gallery/**"
+      - "scripts/build_gallery_site.py"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+# Allow only one concurrent deployment; let a running deploy finish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      - name: Build gallery site
+        run: python scripts/build_gallery_site.py
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
