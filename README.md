@@ -52,7 +52,8 @@ poster-quality maps and animations:
 | <img src="https://raw.githubusercontent.com/pixelx-jp/prettyplateau/main/gallery/shinjuku_density_hex.png" /> | **Density Hex** — Shinjuku station as a density spike on a 250 m hex lattice. |
 | <img src="https://raw.githubusercontent.com/pixelx-jp/prettyplateau/main/gallery/fukuoka_age_rainbow.png" /> | **Building Age Rainbow** — Fukuoka coloured by `year_built`. Buildings without a year stay grey — never inferred. |
 
-See [`gallery/`](./gallery/) for the full 35-image launch matrix.
+Browse the **[live gallery →](https://pixelx-jp.github.io/prettyplateau/)** for
+the full 31-render launch matrix (or see [`gallery/`](./gallery/) in the repo).
 
 ## Built-in presets
 
