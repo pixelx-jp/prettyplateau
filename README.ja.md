@@ -13,6 +13,8 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](./LICENSE)
 [![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-orange.svg)](https://creativecommons.org/licenses/by/4.0/)
 
+**[🌐 ブラウザで試す →](https://prettyplateau.plateau.yodolabs.jp)** — インストール不要でその場でレンダリング（[ソース](https://github.com/pixelx-jp/prettyplateau-web)）。
+
 </div>
 
 ---
