@@ -139,9 +139,6 @@ class SurvivorTimelinePreset(BasePreset):
             year_grid = np.linspace(y_lo, y_hi, n_frames).astype(int).tolist()
 
         geometries = list(gdf.geometry)
-        [palette.color_for(k) for k in age_keys.tolist()]
-        unknown_mask = age_keys == "unknown"
-        [palette.color_for("unknown") if u else None for u in unknown_mask.tolist()]
         # Pre-compute faded versions per palette key.
         faded_by_key = {k: _faded(palette.color_for(k)) for k in palette.colors}
 
@@ -151,6 +148,21 @@ class SurvivorTimelinePreset(BasePreset):
         keys_arr = age_keys.to_numpy()
         boundary_layer = admin_boundary_layer(ds, theme)
         year_lo, year_hi = (int(year_grid[0]), int(year_grid[-1])) if year_grid else (0, 0)
+
+        # The frame loop is frames × buildings; at 180 frames × 300k buildings a
+        # per-cell `palette.color_for` is ~50M dict lookups. Resolve each
+        # building's solid/faded colour and key-string ONCE here, then select
+        # between them per frame with vectorized numpy ops (no Python-level
+        # palette calls inside the loop).
+        unknown_color = palette.color_for("unknown")
+        key_str_arr = keys_arr.astype(str)
+        solid_colors = np.array(
+            [palette.color_for(k) for k in keys_arr], dtype=object
+        )
+        faded_colors = np.array(
+            [faded_by_key.get(k, unknown_color) for k in keys_arr], dtype=object
+        )
+        is_nan = np.isnan(years_arr)
 
         legend = LegendSpec(
             title="Year built",
@@ -165,21 +177,18 @@ class SurvivorTimelinePreset(BasePreset):
         )
 
         for fi, target_year in enumerate(year_grid):
-            fills: list[str] = []
-            frame_keys: list[str] = []
-            for i in range(len(geometries)):
-                yr = years_arr[i]
-                if np.isnan(yr):
-                    fills.append(palette.color_for("unknown"))
-                    frame_keys.append("unknown")  # reserved — never tinted by theme contrast
-                elif yr <= target_year:
-                    fills.append(palette.color_for(keys_arr[i]))
-                    frame_keys.append(str(keys_arr[i]))
-                else:
-                    fills.append(faded_by_key.get(keys_arr[i], palette.color_for("unknown")))
-                    # Faded fill is a derived colour, not a palette key — leave
-                    # it empty so the renderer is free to apply theme contrast.
-                    frame_keys.append("")
+            # built ⇒ solid colour, not-yet-built ⇒ faded, unknown-year ⇒ grey.
+            built = ~is_nan & (years_arr <= target_year)
+            # np.where over object arrays returns the per-building colour string
+            # for each branch in one C-level pass instead of a Python loop.
+            fills = np.where(
+                is_nan, unknown_color, np.where(built, solid_colors, faded_colors)
+            ).tolist()
+            # "unknown" is reserved (never theme-tinted); built keeps its key;
+            # faded fills are derived colours so leave the key empty for contrast.
+            frame_keys = np.where(
+                is_nan, "unknown", np.where(built, key_str_arr, "")
+            ).tolist()
             layer = PolygonLayer(
                 id="buildings",
                 geometries=geometries,

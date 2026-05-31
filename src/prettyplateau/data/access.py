@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass, field
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -56,6 +57,19 @@ def _resolve_admin_geojson() -> Path | None:
 _ADMIN_CACHE: dict[str, BaseGeometry] = {}
 
 
+@lru_cache(maxsize=4)
+def _load_admin_gdf(geojson_path: Path) -> gpd.GeoDataFrame | None:
+    """Parse the bundled admin geojson once and reuse it across cities.
+
+    `japan_admin.geojson` is ~10 MB and covers the whole country; without this
+    cache a batch render of N cities re-parses the entire file N times. Keyed by
+    path so an explicit override still works. Returns None on read failure."""
+    try:
+        return gpd.read_file(geojson_path)
+    except Exception:  # noqa: BLE001
+        return None
+
+
 def lookup_admin_boundary(city_code: str) -> BaseGeometry | None:
     """Return a (possibly multi-) polygon outlining the given JIS city_code, or None."""
     if not city_code:
@@ -65,9 +79,8 @@ def lookup_admin_boundary(city_code: str) -> BaseGeometry | None:
     geojson_path = _resolve_admin_geojson()
     if geojson_path is None:
         return None
-    try:
-        gdf = gpd.read_file(geojson_path)
-    except Exception:  # noqa: BLE001
+    gdf = _load_admin_gdf(geojson_path)
+    if gdf is None:
         return None
     # The geojson uses several different code columns; match against both.
     code_col = "city_code" if "city_code" in gdf.columns else "code"

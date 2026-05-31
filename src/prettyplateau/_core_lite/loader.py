@@ -10,7 +10,7 @@ from typing import Any
 
 import geopandas as gpd
 import pyarrow.parquet as pq
-import shapely.wkb as _wkb
+import shapely
 
 from prettyplateau.core.errors import DataNotFoundError
 from prettyplateau.core.logging import get_logger
@@ -181,8 +181,14 @@ def load_buildings(
 
     cols = None
     if columns is not None:
-        # Always need geometry + the centroid for bbox prefilter.
-        cols = list({*columns, "geometry", "centroid_lon", "centroid_lat"})
+        # Always need geometry + the centroid for bbox prefilter. Intersect with
+        # the file's actual schema (read from footer metadata, no row I/O) so a
+        # column the preset wants but the parquet lacks is simply skipped rather
+        # than raising in read_table — the friendly missing-field check upstream
+        # then surfaces it as DataFieldMissingError.
+        available = set(pq.ParquetFile(pq_path).schema_arrow.names)
+        wanted = {*columns, "geometry", "centroid_lon", "centroid_lat"}
+        cols = [c for c in available if c in wanted]
     table = pq.read_table(pq_path, columns=cols)
     df = table.to_pandas()
     _logger.info("loaded %d rows from %s", len(df), pq_path)
@@ -198,6 +204,9 @@ def load_buildings(
         df = df[m].reset_index(drop=True)
         _logger.info("after bbox filter: %d rows", len(df))
 
-    geom = df["geometry"].map(lambda b: _wkb.loads(b) if b is not None else None)
+    # Vectorized WKB decode: shapely.from_wkb runs the GEOS reader in C over the
+    # whole column at once, ~10x faster than a per-row Python `.map(wkb.loads)`
+    # which matters at 300k+ buildings. It tolerates None/NA entries natively.
+    geom = shapely.from_wkb(df["geometry"].to_numpy())
     gdf = gpd.GeoDataFrame(df.drop(columns=["geometry"]), geometry=geom, crs="EPSG:4326")
     return gdf

@@ -118,7 +118,12 @@ def render(
     fmt = _infer_format(request, preset_default=preset_obj.metadata.default_format)
 
     access = DataAccess(data_root=data_root)
-    dataset = access.load_city(request.city, bbox=request.bbox)
+    # Project to just the columns this preset declares it touches (required +
+    # optional). The loader always adds geometry + centroid, and intersects with
+    # the file schema, so this only ever *narrows* I/O — skipping the heavy 3D
+    # geometry / unused attribute columns the preset never reads.
+    wanted_columns = list({*requirement.required_fields, *requirement.optional_fields})
+    dataset = access.load_city(request.city, bbox=request.bbox, columns=wanted_columns)
     if dataset.gdf.empty:
         raise BBoxEmptyError(
             f"city {request.city!r}: no buildings inside the requested bbox / dataset is empty"

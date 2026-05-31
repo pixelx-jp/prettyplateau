@@ -22,7 +22,7 @@ from pathlib import Path
 
 import geopandas as gpd
 import pyarrow.parquet as pq
-import shapely.wkb as _wkb
+import shapely
 
 from prettyplateau.core.errors import DataNotFoundError
 from prettyplateau.core.logging import get_logger
@@ -117,7 +117,12 @@ def load_buildings(
             _logger.warning(
                 "requested columns not present in plateau_bridge schema: %s", unknown
             )
-        cols = list({*columns, "geometry", "centroid_lon", "centroid_lat"})
+        # Intersect with the file's actual schema (footer metadata only, no row
+        # I/O) so a requested-but-absent column is skipped instead of raising in
+        # read_table; the upstream missing-field check then reports it cleanly.
+        available = set(pq.ParquetFile(pq_path).schema_arrow.names)
+        wanted = {*columns, "geometry", "centroid_lon", "centroid_lat"}
+        cols = [c for c in available if c in wanted]
     else:
         cols = None
 
@@ -135,6 +140,9 @@ def load_buildings(
         )
         df = df[m].reset_index(drop=True)
 
-    geom = df["geometry"].map(lambda b: _wkb.loads(b) if b is not None else None)
+    # Vectorized WKB decode (GEOS reader in C over the whole column) — ~10x
+    # faster than a per-row Python `.map(wkb.loads)` at 300k+ buildings, and
+    # tolerates None/NA entries natively. Mirrors `_core_lite.load_buildings`.
+    geom = shapely.from_wkb(df["geometry"].to_numpy())
     gdf = gpd.GeoDataFrame(df.drop(columns=["geometry"]), geometry=geom, crs="EPSG:4326")
     return gdf
