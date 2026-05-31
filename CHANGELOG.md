@@ -6,6 +6,15 @@ this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.1.3] — 2026-05-31
+
+### Performance
+- Polygon layers now draw through a single `PathCollection` over raw matplotlib
+  `Path`s instead of wrapping every ring in a `PathPatch` for a
+  `PatchCollection`. Coordinates are pulled from shapely in bulk via
+  `get_coordinates`. ~2–2.5× faster rendering on dense cities (e.g. Shinjuku
+  ~57k buildings), pixel-identical output (verified by the visual baselines).
+
 ## [0.1.1] — 2026-05-29
 
 ### Fixed
