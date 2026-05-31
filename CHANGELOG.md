@@ -6,6 +6,23 @@ this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.1.4] — 2026-05-31
+
+### Performance
+- `load_buildings` now decodes the WKB geometry column with the vectorized
+  `shapely.from_wkb` (GEOS reader in C) instead of a per-row `wkb.loads` map —
+  ~10× faster geometry decode at 300k+ buildings. Mirrored in the
+  plateau-bridge adapter.
+- The render path projects the parquet to only the columns the preset declares
+  it uses (required + optional), intersected with the file schema — skipping
+  the heavy 3D geometry / unused attribute columns on every load.
+- `load_palette` is cached so bundled palette JSON is parsed once per process,
+  and the ~10 MB bundled admin GeoJSON is parsed once and reused across cities.
+- `survivor_timeline` builds each animation frame's fills with vectorized numpy
+  selection instead of a per-building Python loop over `palette.color_for`
+  (dropped ~50M dict lookups on a 180-frame × 300k-building render). Output is
+  unchanged.
+
 ## [0.1.3] — 2026-05-31
 
 ### Performance
