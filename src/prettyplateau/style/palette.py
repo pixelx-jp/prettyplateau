@@ -9,7 +9,7 @@ from __future__ import annotations
 import json
 from collections.abc import Iterable
 from dataclasses import dataclass, field
-from functools import lru_cache
+from functools import cache
 from importlib.resources import files
 from pathlib import Path
 
@@ -57,7 +57,7 @@ class Palette:
             yield from self.colors.keys()
 
 
-@lru_cache(maxsize=None)
+@cache
 def load_palette(palette_id: str) -> Palette:
     # Bundled palette JSONs are read-only and small in number; parse each file
     # at most once per process. Palette is frozen so the cached value is safe to
